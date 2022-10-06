@@ -4,6 +4,7 @@ import 'package:chip_list/chip_list.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:multi_select_flutter/chip_display/multi_select_chip_display.dart';
 import 'package:multi_select_flutter/dialog/multi_select_dialog_field.dart';
 import 'package:multi_select_flutter/util/multi_select_item.dart';
@@ -22,13 +23,13 @@ class DrawerContent extends StatefulWidget {
   varCallback varcallback;
 
   String type;
-  DrawerContent({
-    Key? key,
-    required this.signedIn,
-    required this.callback,
-    required this.type,
-    required this.varcallback
-  }) : super(key: key);
+  DrawerContent(
+      {Key? key,
+      required this.signedIn,
+      required this.callback,
+      required this.type,
+      required this.varcallback})
+      : super(key: key);
 
   @override
   State<DrawerContent> createState() => _DrawerContentState();
@@ -138,26 +139,26 @@ class _DrawerContentState extends State<DrawerContent> {
     }
 
     return Container(
-      color: Color(0xFFE4EEF8),
+      color: Color.fromARGB(255, 33, 48, 65),
       width: MediaQuery.of(context).size.width * 0.7,
       child: ListView(
         children: [
           Container(
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
-              color: Color.fromARGB(255, 42, 43, 43),
+              color: Color.fromARGB(255, 33, 48, 65),
               borderRadius: BorderRadius.only(bottomRight: Radius.circular(25)),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.shade600,
-                  blurRadius: 25.0, //effect of softening the shadow
-                  spreadRadius: 0.2, //effecet of extending the shadow
-                  offset: Offset(
-                    -5.0, //horizontal
-                    15.0, //vertical
-                  ),
-                ),
-              ],
+              // boxShadow: [
+              //   BoxShadow(
+              //     color: Colors.grey.shade600,
+              //     blurRadius: 25.0, //effect of softening the shadow
+              //     spreadRadius: 0.2, //effecet of extending the shadow
+              //     offset: Offset(
+              //       -5.0, //horizontal
+              //       15.0, //vertical
+              //     ),
+              //   ),
+              // ],
             ),
             child: Column(
               children: [
@@ -287,35 +288,11 @@ class _DrawerContentState extends State<DrawerContent> {
                           height: 50,
                           width: MediaQuery.of(context).size.width * 0.6,
                           decoration: BoxDecoration(
-                              color: Color.fromARGB(255, 29, 28, 28),
-                              // border: Border.all(
-                              //     width: 1, color: Colors.red.shade100),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(15)),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.shade800,
-                                  blurRadius:
-                                      9.0, //effect of softening the shadow
-                                  spreadRadius:
-                                      0.1, //effecet of extending the shadow
-                                  offset: Offset(
-                                    -8.0, //horizontal
-                                    -6.0, //vertical
-                                  ),
-                                ),
-                                BoxShadow(
-                                  color: Colors.black,
-                                  blurRadius:
-                                      12.0, //effect of softening the shadow
-                                  spreadRadius:
-                                      0.2, //effecet of extending the shadow
-                                  offset: Offset(
-                                    10.0, //horizontal
-                                    10.0, //vertical
-                                  ),
-                                ),
-                              ]),
+                            color: Color.fromARGB(255, 17, 27, 39),
+                            // border: Border.all(
+                            //     width: 1, color: Colors.red.shade100),
+                            borderRadius: BorderRadius.all(Radius.circular(15)),
+                          ),
                           child: Padding(
                             padding: EdgeInsets.only(top: 8.0, bottom: 8.0),
                             child: Center(
@@ -352,7 +329,7 @@ class _DrawerContentState extends State<DrawerContent> {
                     GestureDetector(
                       onTap: () {
                         widget.callback("home");
-                         widget.varcallback(null);
+                        widget.varcallback(null);
                         Navigator.of(context).pop();
                       },
                       child: Container(
@@ -360,39 +337,26 @@ class _DrawerContentState extends State<DrawerContent> {
                         width: MediaQuery.of(context).size.width * 0.5,
                         decoration: widget.type == 'home'
                             ? BoxDecoration(
-                                color: Color(0xFFE4EEF8),
+                                color: Color.fromARGB(255, 50, 75, 102),
                                 borderRadius: widget.type == 'home'
                                     ? BorderRadius.all(Radius.circular(15))
                                     : null,
-                                boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.white,
-                                      blurRadius:
-                                          5.0, //effect of softening the shadow
-                                      spreadRadius:
-                                          0.1, //effecet of extending the shadow
-                                      offset: Offset(
-                                        -8.0, //horizontal
-                                        -6.0, //vertical
-                                      ),
-                                    ),
-                                    BoxShadow(
-                                      color: Colors.grey.shade400,
-                                      blurRadius:
-                                          8.0, //effect of softening the shadow
-                                      spreadRadius:
-                                          0.2, //effecet of extending the shadow
-                                      offset: Offset(
-                                        7.0, //horizontal
-                                        5.0, //vertical
-                                      ),
-                                    ),
-                                  ])
+                              )
                             : null,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
+                            Padding(
+                              padding: const EdgeInsets.only(left:15.0, right:5),
+                              child: Icon(
+                                FontAwesomeIcons.house,
+                                size: 15.0,
+                                color: widget.type == 'home'
+                                    ? Colors.grey.shade200
+                                    : Colors.grey.shade400,
+                              ),
+                            ),
                             Padding(
                               padding: EdgeInsets.only(
                                   top: 8.0, bottom: 8.0, left: 12),
@@ -400,8 +364,8 @@ class _DrawerContentState extends State<DrawerContent> {
                                 'Home',
                                 style: TextStyle(
                                     color: widget.type == 'home'
-                                        ? Color.fromARGB(255, 53, 70, 110)
-                                        : Color(0xFF98AAD6),
+                                        ? Colors.grey.shade200
+                                        : Colors.grey.shade400,
                                     fontSize: 20.0,
                                     fontWeight: FontWeight.w600),
                               ),
@@ -414,7 +378,7 @@ class _DrawerContentState extends State<DrawerContent> {
                     GestureDetector(
                       onTap: () {
                         widget.callback("unread");
-                         widget.varcallback(null);
+                        widget.varcallback(null);
                         Navigator.of(context).pop();
                       },
                       child: Stack(
@@ -424,34 +388,11 @@ class _DrawerContentState extends State<DrawerContent> {
                             width: MediaQuery.of(context).size.width * 0.5,
                             decoration: widget.type == 'unread'
                                 ? BoxDecoration(
-                                    color: Color(0xFFE4EEF8),
+                                    color: Color.fromARGB(255, 50, 75, 102),
                                     borderRadius: widget.type == 'unread'
                                         ? BorderRadius.all(Radius.circular(15))
                                         : null,
-                                    boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.white,
-                                          blurRadius:
-                                              5.0, //effect of softening the shadow
-                                          spreadRadius:
-                                              0.1, //effecet of extending the shadow
-                                          offset: Offset(
-                                            -8.0, //horizontal
-                                            -6.0, //vertical
-                                          ),
-                                        ),
-                                        BoxShadow(
-                                          color: Colors.grey.shade400,
-                                          blurRadius:
-                                              8.0, //effect of softening the shadow
-                                          spreadRadius:
-                                              0.2, //effecet of extending the shadow
-                                          offset: Offset(
-                                            7.0, //horizontal
-                                            5.0, //vertical
-                                          ),
-                                        ),
-                                      ])
+                                  )
                                 : null,
                             child: Padding(
                               padding: EdgeInsets.only(
@@ -460,12 +401,23 @@ class _DrawerContentState extends State<DrawerContent> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 5.0, right: 15),
+                                    child: Icon(
+                                      FontAwesomeIcons.solidNewspaper,
+                                      size: 15.0,
+                                      color: widget.type == 'home'
+                                          ? Colors.grey.shade200
+                                          : Colors.grey.shade400,
+                                    ),
+                                  ),
                                   Text(
                                     'Unread News',
                                     style: TextStyle(
                                         color: widget.type == 'unread'
-                                            ? Color.fromARGB(255, 53, 70, 110)
-                                            : Color(0xFF98AAD6),
+                                            ? Colors.grey.shade200
+                                            : Colors.grey.shade400,
                                         fontSize: 20.0,
                                         fontWeight: FontWeight.w600),
                                   ),
@@ -481,7 +433,7 @@ class _DrawerContentState extends State<DrawerContent> {
                       onTap: () {
                         if (widget.signedIn) {
                           widget.callback("bookmarks");
-                           widget.varcallback(null);
+                          widget.varcallback(null);
                           Navigator.of(context).pop();
                         } else {
                           whenCategoryUpDateTapped('viewing bookmarks.');
@@ -494,34 +446,11 @@ class _DrawerContentState extends State<DrawerContent> {
                             width: MediaQuery.of(context).size.width * 0.5,
                             decoration: widget.type == 'bookmarks'
                                 ? BoxDecoration(
-                                    color: Color(0xFFE4EEF8),
+                                    color: Color.fromARGB(255, 50, 75, 102),
                                     borderRadius: widget.type == 'bookmarks'
                                         ? BorderRadius.all(Radius.circular(15))
                                         : null,
-                                    boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.white,
-                                          blurRadius:
-                                              5.0, //effect of softening the shadow
-                                          spreadRadius:
-                                              0.1, //effecet of extending the shadow
-                                          offset: Offset(
-                                            -8.0, //horizontal
-                                            -6.0, //vertical
-                                          ),
-                                        ),
-                                        BoxShadow(
-                                          color: Colors.grey.shade400,
-                                          blurRadius:
-                                              8.0, //effect of softening the shadow
-                                          spreadRadius:
-                                              0.2, //effecet of extending the shadow
-                                          offset: Offset(
-                                            7.0, //horizontal
-                                            5.0, //vertical
-                                          ),
-                                        ),
-                                      ])
+                                  )
                                 : null,
                             child: Padding(
                               padding: EdgeInsets.only(
@@ -530,12 +459,23 @@ class _DrawerContentState extends State<DrawerContent> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 5.0, right: 15),
+                                    child: Icon(
+                                      FontAwesomeIcons.solidBookmark,
+                                      size: 15.0,
+                                      color: widget.type == 'home'
+                                          ? Colors.grey.shade200
+                                          : Colors.grey.shade400,
+                                    ),
+                                  ),
                                   Text(
                                     'Bookmarks',
                                     style: TextStyle(
                                         color: widget.type == 'bookmarks'
-                                            ? Color.fromARGB(255, 53, 70, 110)
-                                            : Color(0xFF98AAD6),
+                                            ? Colors.grey.shade200
+                                            : Colors.grey.shade400,
                                         fontSize: 20.0,
                                         fontWeight: FontWeight.w600),
                                   ),
@@ -548,7 +488,7 @@ class _DrawerContentState extends State<DrawerContent> {
                     ),
                     SizedBox(height: 16.0),
                     GestureDetector(
-                       onTap: () {
+                      onTap: () {
                         if (widget.signedIn) {
                           chooseCategory(_user[0].uid);
                         } else {
@@ -558,11 +498,11 @@ class _DrawerContentState extends State<DrawerContent> {
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.8,
                         decoration: BoxDecoration(
-                          color: Color(0xFFE4EEF8),
+                          color: Color.fromARGB(255, 33, 48, 65),
                           borderRadius: BorderRadius.all(Radius.circular(15)),
                           border: Border.all(
                               width: 1,
-                              color: Color.fromARGB(255, 149, 187, 226)),
+                              color: Color.fromARGB(255, 39, 90, 141)),
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -574,10 +514,21 @@ class _DrawerContentState extends State<DrawerContent> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 5.0, right: 15),
+                                    child: Icon(
+                                      FontAwesomeIcons.list,
+                                      size: 15.0,
+                                      color: widget.type == 'home'
+                                          ? Colors.grey.shade200
+                                          : Colors.grey.shade400,
+                                    ),
+                                  ),
                                   Text(
                                     "Category",
                                     style: TextStyle(
-                                        color: Color(0xFF98AAD6),
+                                        color: Colors.grey.shade400,
                                         fontSize: 20.0,
                                         fontWeight: FontWeight.w600),
                                   ),
@@ -586,16 +537,24 @@ class _DrawerContentState extends State<DrawerContent> {
                             ),
                             ChipList(
                               listOfChipNames: categoryString,
-                              activeBgColorList: [Color(0xFF98AAD6)],
-                              inactiveBgColorList: [Color(0xFF98AAD6)],
+                              activeBgColorList: [
+                                Color.fromARGB(255, 50, 75, 102),
+                              ],
+                              inactiveBgColorList: [
+                                Color.fromARGB(255, 50, 75, 102),
+                              ],
                               activeTextColorList: [Colors.white],
                               inactiveTextColorList: [Colors.white],
                               listOfChipIndicesCurrentlySeclected: [0],
                               shouldWrap: true,
                               runSpacing: 0,
                               spacing: 0,
-                              activeBorderColorList: [Color(0xFF98AAD6)],
-                              inactiveBorderColorList: [Color(0xFF98AAD6)],
+                              activeBorderColorList: [
+                                Color.fromARGB(255, 50, 75, 102),
+                              ],
+                              inactiveBorderColorList: [
+                                Color.fromARGB(255, 50, 75, 102),
+                              ],
                             ),
                           ],
                         ),
@@ -614,34 +573,11 @@ class _DrawerContentState extends State<DrawerContent> {
                             width: MediaQuery.of(context).size.width * 0.5,
                             decoration: widget.type == 'aboutUs'
                                 ? BoxDecoration(
-                                    color: Color(0xFFE4EEF8),
+                                    color: Color.fromARGB(255, 50, 75, 102),
                                     borderRadius: widget.type == 'aboutUs'
                                         ? BorderRadius.all(Radius.circular(15))
                                         : null,
-                                    boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.white,
-                                          blurRadius:
-                                              5.0, //effect of softening the shadow
-                                          spreadRadius:
-                                              0.1, //effecet of extending the shadow
-                                          offset: Offset(
-                                            -8.0, //horizontal
-                                            -6.0, //vertical
-                                          ),
-                                        ),
-                                        BoxShadow(
-                                          color: Colors.grey.shade400,
-                                          blurRadius:
-                                              8.0, //effect of softening the shadow
-                                          spreadRadius:
-                                              0.2, //effecet of extending the shadow
-                                          offset: Offset(
-                                            7.0, //horizontal
-                                            5.0, //vertical
-                                          ),
-                                        ),
-                                      ])
+                                  )
                                 : null,
                             child: Padding(
                               padding: EdgeInsets.only(
@@ -650,12 +586,23 @@ class _DrawerContentState extends State<DrawerContent> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 5.0, right: 15),
+                                    child: Icon(
+                                      FontAwesomeIcons.circleInfo,
+                                      size: 15.0,
+                                      color: widget.type == 'home'
+                                          ? Colors.grey.shade200
+                                          : Colors.grey.shade400,
+                                    ),
+                                  ),
                                   Text(
                                     'About Us',
                                     style: TextStyle(
                                         color: widget.type == 'aboutUs'
-                                            ? Color.fromARGB(255, 53, 70, 110)
-                                            : Color(0xFF98AAD6),
+                                            ? Colors.grey.shade200
+                                            : Colors.grey.shade400,
                                         fontSize: 20.0,
                                         fontWeight: FontWeight.w600),
                                   ),
