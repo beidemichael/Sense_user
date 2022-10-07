@@ -143,173 +143,155 @@ class _DrawerContentState extends State<DrawerContent> {
       width: MediaQuery.of(context).size.width * 0.7,
       child: ListView(
         children: [
-          Container(
-            width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-              color: Color.fromARGB(255, 33, 48, 65),
-              borderRadius: BorderRadius.only(bottomRight: Radius.circular(25)),
-              // boxShadow: [
-              //   BoxShadow(
-              //     color: Colors.grey.shade600,
-              //     blurRadius: 25.0, //effect of softening the shadow
-              //     spreadRadius: 0.2, //effecet of extending the shadow
-              //     offset: Offset(
-              //       -5.0, //horizontal
-              //       15.0, //vertical
-              //     ),
-              //   ),
-              // ],
-            ),
-            child: Column(
-              children: [
-                SizedBox(height: 100.0),
-                photoURL != ''
-                    ? ClipOval(
-                        child: Material(
-                          color: Colors.white,
-                          child: Image.network(
-                            photoURL,
-                            fit: BoxFit.fitHeight,
-                          ),
+          Column(
+            children: [
+              SizedBox(height: 40.0),
+              photoURL != ''
+                  ? ClipOval(
+                      child: Material(
+                        color: Colors.white,
+                        child: Image.network(
+                          photoURL,
+                          fit: BoxFit.fitHeight,
                         ),
-                      )
-                    : ClipOval(
-                        child: Material(
-                          color: Colors.white,
-                          child: Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: Icon(
-                              Icons.person,
-                              size: 60,
-                              color: Color(0xFF98AAD6),
-                            ),
+                      ),
+                    )
+                  : ClipOval(
+                      child: Material(
+                        color: Colors.white,
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Icon(
+                            Icons.person,
+                            size: 60,
+                            color: Color(0xFF98AAD6),
                           ),
                         ),
                       ),
-                SizedBox(height: 20.0),
-                Text(
-                  displayName,
-                  style: TextStyle(
-                    color: Colors.grey.shade300,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 20,
-                  ),
+                    ),
+              SizedBox(height: 20.0),
+              Text(
+                displayName,
+                style: TextStyle(
+                  color: Colors.grey.shade300,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 20,
                 ),
-                SizedBox(height: 8.0),
-                Text(
-                  '${email}',
-                  style: TextStyle(
-                    color: Colors.grey.shade500,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 15,
-                  ),
+              ),
+              SizedBox(height: 8.0),
+              Text(
+                '${email}',
+                style: TextStyle(
+                  color: Colors.grey.shade500,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 15,
                 ),
-                SizedBox(height: 16.0),
-                _isSigningOut
-                    ? Container(
+              ),
+              SizedBox(height: 16.0),
+              _isSigningOut
+                  ? Container(
+                      height: 50,
+                      width: MediaQuery.of(context).size.width * 0.5,
+                      decoration: BoxDecoration(
+                        color: Color(0xFF98AAD6),
+                        borderRadius: BorderRadius.all(Radius.circular(15)),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.only(top: 8.0, bottom: 8.0),
+                        child: Center(
+                          child: SpinKitCircle(
+                            color: Colors.white,
+                            size: 30.0,
+                          ),
+                        ),
+                      ),
+                    )
+                  : GestureDetector(
+                      onTap: () async {
+                        if (email == '') {
+                          setState(() {
+                            _isSigningOut = true;
+                          });
+                          AuthServices.initializeFirebase(context: context);
+                          User? user = await AuthServices.signInWithGoogle(
+                              context: context);
+                          setState(() {
+                            _isSigningOut = false;
+                          });
+                          Navigator.of(context).pop();
+
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              duration: Duration(milliseconds: 800),
+                              elevation: 5,
+                              backgroundColor: Color(0xFF98AAD6),
+                              content: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Signed in :)',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 18.0,
+                                        fontWeight: FontWeight.w300),
+                                  ),
+                                ],
+                              )));
+                        } else {
+                          setState(() {
+                            _isSigningOut = true;
+                          });
+
+                          await AuthServices.signOut(context: context);
+                          setState(() {
+                            _isSigningOut = false;
+                          });
+                          Navigator.of(context).pop();
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              duration: Duration(milliseconds: 800),
+                              elevation: 5,
+                              backgroundColor: Color(0xFF98AAD6),
+                              content: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Signed out :(',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 18.0,
+                                        fontWeight: FontWeight.w300),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        }
+                      },
+                      child: Container(
                         height: 50,
-                        width: MediaQuery.of(context).size.width * 0.5,
+                        width: MediaQuery.of(context).size.width * 0.6,
                         decoration: BoxDecoration(
-                          color: Color(0xFF98AAD6),
+                          color: Color.fromARGB(255, 17, 27, 39),
+                          // border: Border.all(
+                          //     width: 1, color: Colors.red.shade100),
                           borderRadius: BorderRadius.all(Radius.circular(15)),
                         ),
                         child: Padding(
                           padding: EdgeInsets.only(top: 8.0, bottom: 8.0),
                           child: Center(
-                            child: SpinKitCircle(
-                              color: Colors.white,
-                              size: 30.0,
-                            ),
-                          ),
-                        ),
-                      )
-                    : GestureDetector(
-                        onTap: () async {
-                          if (email == '') {
-                            setState(() {
-                              _isSigningOut = true;
-                            });
-                            AuthServices.initializeFirebase(context: context);
-                            User? user = await AuthServices.signInWithGoogle(
-                                context: context);
-                            setState(() {
-                              _isSigningOut = false;
-                            });
-                            Navigator.of(context).pop();
-
-                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                duration: Duration(milliseconds: 800),
-                                elevation: 5,
-                                backgroundColor: Color(0xFF98AAD6),
-                                content: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      'Signed in :)',
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 18.0,
-                                          fontWeight: FontWeight.w300),
-                                    ),
-                                  ],
-                                )));
-                          } else {
-                            setState(() {
-                              _isSigningOut = true;
-                            });
-
-                            await AuthServices.signOut(context: context);
-                            setState(() {
-                              _isSigningOut = false;
-                            });
-                            Navigator.of(context).pop();
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                duration: Duration(milliseconds: 800),
-                                elevation: 5,
-                                backgroundColor: Color(0xFF98AAD6),
-                                content: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      'Signed out :(',
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 18.0,
-                                          fontWeight: FontWeight.w300),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            );
-                          }
-                        },
-                        child: Container(
-                          height: 50,
-                          width: MediaQuery.of(context).size.width * 0.6,
-                          decoration: BoxDecoration(
-                            color: Color.fromARGB(255, 17, 27, 39),
-                            // border: Border.all(
-                            //     width: 1, color: Colors.red.shade100),
-                            borderRadius: BorderRadius.all(Radius.circular(15)),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.only(top: 8.0, bottom: 8.0),
-                            child: Center(
-                              child: Text(
-                                email == '' ? "Sign In" : "Sign Out",
-                                style: TextStyle(
-                                    color: Colors.grey.shade400,
-                                    fontSize: 17.0,
-                                    fontWeight: FontWeight.w600),
-                              ),
+                            child: Text(
+                              email == '' ? "Sign In" : "Sign Out",
+                              style: TextStyle(
+                                  color: Colors.grey.shade400,
+                                  fontSize: 17.0,
+                                  fontWeight: FontWeight.w600),
                             ),
                           ),
                         ),
                       ),
-                SizedBox(height: 50.0),
-              ],
-            ),
+                    ),
+             
+            ],
           ),
           Padding(
             padding: const EdgeInsets.only(
@@ -320,7 +302,7 @@ class _DrawerContentState extends State<DrawerContent> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                SizedBox(height: 16.0),
+               
                 SizedBox(height: 8.0),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -348,7 +330,8 @@ class _DrawerContentState extends State<DrawerContent> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Padding(
-                              padding: const EdgeInsets.only(left:15.0, right:5),
+                              padding:
+                                  const EdgeInsets.only(left: 15.0, right: 5),
                               child: Icon(
                                 FontAwesomeIcons.house,
                                 size: 15.0,
@@ -508,7 +491,7 @@ class _DrawerContentState extends State<DrawerContent> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: EdgeInsets.only(
+                              padding: const EdgeInsets.only(
                                   top: 8.0, bottom: 8.0, left: 12),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
