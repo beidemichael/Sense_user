@@ -141,7 +141,7 @@ class _TextsAndContentState extends State<TextsAndContent> {
                 Container(
                   //image
                   width: MediaQuery.of(context).size.width,
-                  height: 300,
+                  height: 250,
                   decoration: BoxDecoration(
                     color: Colors.grey[200],
                   ),
@@ -179,18 +179,18 @@ class _TextsAndContentState extends State<TextsAndContent> {
                     width: MediaQuery.of(context).size.width,
                     height: 100,
                     decoration: BoxDecoration(
-                      gradient: new LinearGradient(
-                        colors: [
-                          Colors.white.withOpacity(0.0),
-                          Colors.white.withOpacity(0.2),
-                          Colors.white.withOpacity(0.4),
-                          Colors.white.withOpacity(0.6),
-                          Colors.white.withOpacity(0.8),
-                          Colors.white.withOpacity(1)
-                        ],
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                      ),
+                      // gradient: new LinearGradient(
+                      //   colors: [
+                      //     Colors.white.withOpacity(0.0),
+                      //     Colors.white.withOpacity(0.2),
+                      //     Colors.white.withOpacity(0.4),
+                      //     Colors.white.withOpacity(0.6),
+                      //     Colors.white.withOpacity(0.8),
+                      //     Colors.white.withOpacity(1)
+                      //   ],
+                      //   begin: Alignment.topCenter,
+                      //   end: Alignment.bottomCenter,
+                      // ),
                     ),
                   ),
                 )

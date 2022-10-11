@@ -290,7 +290,6 @@ class _DrawerContentState extends State<DrawerContent> {
                         ),
                       ),
                     ),
-             
             ],
           ),
           Padding(
@@ -302,7 +301,6 @@ class _DrawerContentState extends State<DrawerContent> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-               
                 SizedBox(height: 8.0),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
