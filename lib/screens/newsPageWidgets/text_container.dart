@@ -179,19 +179,19 @@ class _TextsAndContentState extends State<TextsAndContent> {
                     width: MediaQuery.of(context).size.width,
                     height: 100,
                     decoration: BoxDecoration(
-                      // gradient: new LinearGradient(
-                      //   colors: [
-                      //     Colors.white.withOpacity(0.0),
-                      //     Colors.white.withOpacity(0.2),
-                      //     Colors.white.withOpacity(0.4),
-                      //     Colors.white.withOpacity(0.6),
-                      //     Colors.white.withOpacity(0.8),
-                      //     Colors.white.withOpacity(1)
-                      //   ],
-                      //   begin: Alignment.topCenter,
-                      //   end: Alignment.bottomCenter,
-                      // ),
-                    ),
+                        // gradient: new LinearGradient(
+                        //   colors: [
+                        //     Colors.white.withOpacity(0.0),
+                        //     Colors.white.withOpacity(0.2),
+                        //     Colors.white.withOpacity(0.4),
+                        //     Colors.white.withOpacity(0.6),
+                        //     Colors.white.withOpacity(0.8),
+                        //     Colors.white.withOpacity(1)
+                        //   ],
+                        //   begin: Alignment.topCenter,
+                        //   end: Alignment.bottomCenter,
+                        // ),
+                        ),
                   ),
                 )
               ],
@@ -204,9 +204,10 @@ class _TextsAndContentState extends State<TextsAndContent> {
                 padding: const EdgeInsets.all(8.0),
                 child: Text(widget.news.headline,
                     style: TextStyle(
+                        fontFamily: 'times',
                         fontSize: 20,
                         color: Colors.grey[900],
-                        fontWeight: FontWeight.w800)),
+                        fontWeight: FontWeight.w900)),
               ),
             ),
             Expanded(
@@ -238,6 +239,7 @@ class _TextsAndContentState extends State<TextsAndContent> {
 
                                 // maxLines: 4,
                                 style: TextStyle(
+                                  fontFamily: 'georgia',
                                     fontSize: 17,
                                     color: Colors.grey[500],
                                     fontWeight: FontWeight.w400)),

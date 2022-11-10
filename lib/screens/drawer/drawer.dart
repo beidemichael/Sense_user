@@ -139,6 +139,7 @@ class _DrawerContentState extends State<DrawerContent> {
     }
 
     return Container(
+      constraints: BoxConstraints(maxWidth: 300),
       color: Color.fromARGB(255, 33, 48, 65),
       width: MediaQuery.of(context).size.width * 0.7,
       child: ListView(
