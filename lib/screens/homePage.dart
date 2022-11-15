@@ -76,7 +76,9 @@ class _HomePageState extends State<HomePage> {
       }
     }
 
+    
     return Scaffold(
+      backgroundColor: Colors.grey[900],
       drawer: StreamProvider<List<NewsCategory>>.value(
           value: DatabaseService().newsCategory,
           initialData: [],

@@ -133,7 +133,7 @@ class _TextsAndContentState extends State<TextsAndContent> {
     return Screenshot(
       controller: screenshotController,
       child: Container(
-        color: Colors.white,
+        color: Colors.black,
         child: Column(
           children: <Widget>[
             Stack(
@@ -203,10 +203,12 @@ class _TextsAndContentState extends State<TextsAndContent> {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(widget.news.headline,
+                
                     style: TextStyle(
                         fontFamily: 'times',
                         fontSize: 20,
-                        color: Colors.grey[900],
+                        color: Colors.white,
+                        height: 1.5,
                         fontWeight: FontWeight.w900)),
               ),
             ),
@@ -241,6 +243,7 @@ class _TextsAndContentState extends State<TextsAndContent> {
                                 style: TextStyle(
                                   fontFamily: 'georgia',
                                     fontSize: 17,
+                                    height: 1.5,
                                     color: Colors.grey[500],
                                     fontWeight: FontWeight.w400)),
                           ),
@@ -276,7 +279,7 @@ class _TextsAndContentState extends State<TextsAndContent> {
                                     children: [
                                       Center(
                                         child: SpinKitThreeBounce(
-                                          color: Colors.black,
+                                          color: Colors.white,
                                           size: 10.0,
                                         ),
                                       ),
@@ -309,14 +312,14 @@ class _TextsAndContentState extends State<TextsAndContent> {
                         child: isLoading
                             ? Center(
                                 child: SpinKitCircle(
-                                  color: Colors.black,
+                                  color: Colors.white,
                                   size: 20.0,
                                 ),
                               )
                             : Icon(
                                 Icons.share,
                                 size: 30,
-                                color: Colors.black,
+                                color: Colors.white,
                               ),
                       ),
                     ),
@@ -335,7 +338,7 @@ class _TextsAndContentState extends State<TextsAndContent> {
                               SnackBar(
                                 duration: Duration(milliseconds: 800),
                                 elevation: 5,
-                                backgroundColor: Colors.black,
+                                backgroundColor: Colors.white,
                                 content: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
@@ -359,7 +362,7 @@ class _TextsAndContentState extends State<TextsAndContent> {
                               SnackBar(
                                 duration: Duration(milliseconds: 800),
                                 elevation: 5,
-                                backgroundColor: Colors.black,
+                                backgroundColor: Colors.white,
                                 content: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
@@ -384,12 +387,12 @@ class _TextsAndContentState extends State<TextsAndContent> {
                           ? Icon(
                               Icons.bookmark,
                               size: 35,
-                              color: Colors.black,
+                              color: Colors.white,
                             )
                           : Icon(
                               Icons.bookmark_add_outlined,
                               size: 35,
-                              color: Colors.black,
+                              color: Colors.white,
                             ),
                     ),
                   ],

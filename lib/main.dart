@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_user/firebase_options.dart';
 import 'package:news_user/screens/drawer/drawer.dart';
 import 'package:news_user/screens/homePage.dart';
 import 'package:news_user/screens/newsPage/newsPage.dart';
@@ -11,23 +12,11 @@ import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  if (Firebase.apps.isEmpty) {
-    await Firebase.initializeApp(
-      name: 'news-app',
-      options: FirebaseOptions(
-          apiKey: "AIzaSyBznVCV8V9bdt-uSf-na4tt_OMHQCGRoDo",
-          authDomain: "news-app-329ee.firebaseapp.com",
-          projectId: "news-app-329ee",
-          storageBucket: "news-app-329ee.appspot.com",
-          messagingSenderId: "353768279389",
-          appId: "1:353768279389:web:8d1941faf99d8c4a8eecb4",
-          measurementId: "G-KXCSD63ZYW"),
-    );
-  }
-  runApp(const MaterialApp(
-      title: "Sense",
-      debugShowCheckedModeBanner: false, home: MyApp()));
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  Firebase.apps;
+  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: MyApp()));
 }
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
